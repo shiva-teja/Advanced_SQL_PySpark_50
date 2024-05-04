@@ -1,4 +1,9 @@
 # Databricks notebook source
+# MAGIC %md
+# MAGIC ## Sellers with No Sales
+
+# COMMAND ----------
+
 Customer_tbl = [[101, 'Alice'], [102, 'Bob'], [103, 'Charlie']]
 customer = ['customer_id', 'customer_name']
 Orders_tbl =[[1, '2020-03-01', 1500, 101, 1], [2, '2020-05-25', 2400, 102, 2], [3, '2019-05-25', 800, 101, 3], [4, '2020-09-13', 1000, 103, 2], [5, '2019-02-11',700, 101, 2]]
