@@ -28,4 +28,23 @@ result.show()
 
 # COMMAND ----------
 
+from pyspark.sql.functions import when, sum, col, lit
+from pyspark.sql.window import Window
+
+windowSpec = Window.partitionBy("u.id").orderBy("u.id")
+
+result_df = combined_df.withColumn(
+    'travelled_distance', 
+    when(col('r.distance').isNotNull(), sum("r.distance").over(windowSpec)).otherwise(lit(0)))
+
+distinct_df = result_df.select("u.name", "travelled_distance").distinct()
+
+
+final_df = distinct_df.orderBy(col("travelled_distance").desc(), col("u.name"))
+
+final_df.show()
+
+
+# COMMAND ----------
+
 
